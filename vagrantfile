@@ -1,0 +1,40 @@
+$bootstrap = <<SCRIPT
+
+    echo "####"
+    echo "###"
+    echo "##"
+    echo "#"
+    echo "# Starting custon features"
+
+    echo "#"
+    echo "# Updating system (This may take a few minutes...)"
+    apt-get update &> /dev/null
+    apt-get install -y git &> /dev/null
+
+    echo "#"
+    echo "# Installing basic gems"
+    gem install bundler  &> /dev/null
+
+    echo "cd /project" >> /home/vagrant/.bash_profile
+    chown vagrant:vagrant /home/vagrant/.bash_profile
+
+    echo "#"
+    echo "#"
+    echo "# Ruby development machine configured successfully"
+    echo "#"
+    echo "# See you space cowboy"
+    echo "#"
+    echo "##"
+    echo "###"
+    echo "####"
+
+SCRIPT
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/trusty32"
+  config.vm.hostname = "ruby"
+  config.vm.synced_folder ".", "/project"
+
+  config.vm.provision :shell, inline: $bootstrap
+  config.vm.provision :file, source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
+end
