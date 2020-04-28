@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.post_install_message = %q{scaffnew successfully installed, just type 'scaff' in terminal to start use}
 
   spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 12.3.3"
 end
