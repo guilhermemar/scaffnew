@@ -1,6 +1,8 @@
 # scaffnew
 A simple scaffold for many purposes
 
+> Discontinued, sorry :-/
+
 ## Comandos
 
 ### repository
